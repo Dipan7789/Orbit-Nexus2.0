@@ -36,6 +36,9 @@ COPY . .
 # Build frontend (optional fail-safe)
 RUN npm run build || echo "Skipping frontend build"
 
+# Add volume for persistent data
+VOLUME ["/app/data"]
+
 # Expose port for API
 EXPOSE 8000
 

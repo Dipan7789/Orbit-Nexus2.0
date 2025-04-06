@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
-ENV NODE_VERSION=18
+ENV NODE_VERSION=20
 
 # Update and install dependencies
 RUN apt-get update && apt-get install -y \

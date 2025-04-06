@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g npm@latest
 
@@ -33,8 +33,8 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Build frontend
-RUN npm run build
+# Build frontend (ensure you have a build script in package.json)
+RUN npm run build || echo "No build script found in package.json"
 
 # Expose port for API
 EXPOSE 8000

@@ -1,10 +1,9 @@
-
 # Use Ubuntu 22.04 as base image
 FROM ubuntu:22.04
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
-ENV NODE_VERSION=18.x
+ENV NODE_VERSION=18
 
 # Update and install dependencies
 RUN apt-get update && apt-get install -y \

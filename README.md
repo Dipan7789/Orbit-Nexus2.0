@@ -30,14 +30,14 @@ This project is a comprehensive inventory management system designed for the Int
 #### Using Docker
 1. Clone the repository:
    ```
-   git clone <repository-url>
+   git clone https://github.com/orbit-nexus/iss-inventory-system.git
    cd iss-inventory-system
    ```
 
 2. Build and run the Docker container:
    ```
    docker build -t iss-inventory-system .
-   docker run -p 8000:8000 iss-inventory-system
+   docker run -p 8000:8000 -v $(pwd)/data:/app/data iss-inventory-system
    ```
 
 3. Access the application at `http://localhost:8000`
@@ -59,6 +59,8 @@ This project is a comprehensive inventory management system designed for the Int
 - `GET /api/inventory` - Get all inventory items
 - `GET /api/inventory/<item_id>` - Get specific inventory item
 - `POST /api/inventory` - Add new inventory item
+- `PUT /api/inventory/<item_id>` - Update an inventory item
+- `DELETE /api/inventory/<item_id>` - Delete an inventory item
 
 ## License
 ISS Inventory Management System is MIT licensed.

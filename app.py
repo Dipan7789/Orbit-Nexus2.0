@@ -181,10 +181,10 @@ def delete_item(item_id):
 @app.route('/api/placement', methods=['POST'])
 def get_placement_recommendations():
     data = request.json
-    if not data or 'item_type' not in data:
-        return jsonify({"error": "Missing required field: item_type"}), 400
+    if not data:
+        return jsonify({"error": "Invalid data"}), 400
     
-    item_type = data['item_type']
+    item_type = data.get('item_type', '')  # Make item_type optional by using .get() with default value
     quantity = data.get('quantity', 1)
     
     # Find containers with sufficient space
@@ -195,11 +195,12 @@ def get_placement_recommendations():
             # More sophisticated algorithm could be implemented here
             score = (container['capacity'] - container['current_fill']) * 0.5
             
-            # Boost score if container already has similar items
-            similar_items = [item for item in inventory_items 
-                            if item['container_id'] == container['id'] and item_type.lower() in item['name'].lower()]
-            if similar_items:
-                score += 20
+            # Boost score if container already has similar items (only if item_type is provided)
+            if item_type:
+                similar_items = [item for item in inventory_items 
+                                if item['container_id'] == container['id'] and item_type.lower() in item['name'].lower()]
+                if similar_items:
+                    score += 20
                 
             suitable_containers.append({
                 "container_id": container['id'],

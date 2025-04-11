@@ -402,7 +402,7 @@ def complete_waste_undocking():
     save_data(WASTE_FILE, waste_items)
     
     return jsonify({
-        "success": True,
+        "success": "true",
         "waste_id": waste_id,
         "status": "returned",
         "completion_date": waste_item['return_completion_date']

@@ -346,7 +346,7 @@ def identify_waste():
     save_data(WASTE_FILE, waste_items)
     
     return jsonify({
-        "success": True,
+        "success": "true",
         "waste_id": waste_id,
         "status": "identified"
     })

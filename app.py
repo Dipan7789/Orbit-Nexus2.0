@@ -272,7 +272,7 @@ def retrieve_item():
     add_log("Retrieve", item_id, -quantity, user)
     
     return jsonify({
-        "success": True,
+        "success": "true",
         "item_id": item_id,
         "name": item['name'],
         "quantity_retrieved": quantity,

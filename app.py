@@ -217,7 +217,7 @@ def get_placement_recommendations():
     recommendations = suitable_containers[:3] if len(suitable_containers) > 3 else suitable_containers
     
     return jsonify({
-        "success": true
+        "success": true,
         "item_type": item_type,
         "quantity": quantity,
         "recommendations": recommendations
